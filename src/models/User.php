@@ -2,7 +2,6 @@
 namespace id5\rbac\models;
 
 use Yii;
-use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
 use id5\rbac\components\UserIdentity;
 
@@ -20,7 +19,7 @@ use id5\rbac\components\UserIdentity;
  * @property string $created_at
  * @property string $updated_at
  */
-class User extends ActiveRecord implements UserIdentity
+class User extends UserIdentity
 {
     
     const STATUS_UNCONFIRMED = 0;
