@@ -2,7 +2,7 @@
     "name": "id5/yii2-rbac",
     "description": "User management",
     "type": "yii2-extension",
-    "keywords": ["yii2","extension"],
+    "keywords": ["yii2","extension","rbac","user management"],
     "license": "MIT",
     "authors": [
         {
@@ -10,12 +10,14 @@
             "email": "marcelo@id5.com.br"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
-        "yiisoft/yii2": "~2.0.10"
+        "php": ">=7.0.0",
+        "yiisoft/yii2": "~2.0.14"
     },
     "autoload": {
         "psr-4": {
-            "id5\\rbac\\": ""
+            "id5\\rbac\\": "src/"
         }
     }
 }
