@@ -21,8 +21,8 @@ class m180912_193723_create_user_table extends Migration
             'password_reset_token' => $this->string(),
             'status' => $this->tinyInteger()->defaultValue(0),
             'superadmin' => $this->tinyInteger()->defaultValue(0),
-            'created_at' => $this->timestamp(),
-            'updated_at' => $this->timestamp(),
+            'created_at' => $this->integer(),
+            'updated_at' => $this->integer(),
         ]);
     }
 
