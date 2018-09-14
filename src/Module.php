@@ -20,7 +20,14 @@ class Module extends \yii\base\Module
     public function init()
     {
         parent::init();
+
+        $this->setLoginUrl();
         $this->registerTranslations();
+    }
+
+    public function setLoginUrl()
+    {
+        Yii::$app->user->loginUrl = ['/rbac/auth/login'];
     }
 
     public function registerTranslations()
