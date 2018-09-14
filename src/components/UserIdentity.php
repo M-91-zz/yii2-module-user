@@ -2,6 +2,7 @@
 
 namespace id5\rbac\components;
 
+use Yii;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 use id5\rbac\models\User;
