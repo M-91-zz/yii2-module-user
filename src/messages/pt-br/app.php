@@ -17,14 +17,24 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Auth Key' => 'Chave de autenticação',
+    'Are you sure you want to delete this item?' => '',
+    'Create User' => 'Novo usuário',
+    'Delete' => 'Excluir',
     'Email' => '',
     'ID' => '',
-    'Password Hash' => 'Hash de senha',
-    'Password Reset Token' => 'Token de alteração de senha',
+    'Reset' => '',
+    'Save' => 'Salvar',
+    'Search' => 'Buscar',
     'Status' => '',
     'Superadmin' => '',
+    'The requested page does not exist.' => '',
+    'Update' => 'Atualizar',
+    'Update User: mode' => 'Atualizar usuário',
+    'Users' => 'Usuários',
+    'Auth Key' => 'Chave de autenticação',
     'Created At' => 'Criado em',
+    'Password Hash' => 'Hash de senha',
+    'Password Reset Token' => 'Token de alteração de senha',
     'Updated At' => 'Atualizado em',
     'Username' => 'Usuário',
 ];
