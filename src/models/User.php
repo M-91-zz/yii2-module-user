@@ -51,6 +51,7 @@ class User extends UserIdentity
     {
         return [
             ['status', 'default', 'value' => self::STATUS_UNCONFIRMED],
+            ['superadmin', 'default', 'value' => 0],
             ['status', 'in', 'range' => [
                 self::STATUS_ACTIVE,
                 self::STATUS_DELETED,
