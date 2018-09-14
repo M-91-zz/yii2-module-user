@@ -84,4 +84,11 @@ class User extends UserIdentity
         ];
     }
 
+    /**
+     * @return boolean
+     */
+    public function isSuperadmin(): bool
+    {
+        return $this->superadmin;
+    }
 }
