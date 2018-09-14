@@ -122,6 +122,6 @@ class UserController extends Controller
             return $model;
         }
 
-        throw new NotFoundHttpException(Yii::t('id5.rbac', 'The requested page does not exist.'));
+        throw new NotFoundHttpException(Module::t('app', 'The requested page does not exist.'));
     }
 }

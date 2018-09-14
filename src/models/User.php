@@ -4,6 +4,7 @@ namespace id5\rbac\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use id5\rbac\components\UserIdentity;
+use id5\rbac\Module;
 
 /**
  * This is the model class for table "{{%user}}".
@@ -70,16 +71,16 @@ class User extends UserIdentity
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('id5.rbac', 'ID'),
-            'username' => Yii::t('id5.rbac', 'Username'),
-            'password_hash' => Yii::t('id5.rbac', 'Password Hash'),
-            'email' => Yii::t('id5.rbac', 'Email'),
-            'auth_key' => Yii::t('id5.rbac', 'Auth Key'),
-            'password_reset_token' => Yii::t('id5.rbac', 'Password Reset Token'),
-            'status' => Yii::t('id5.rbac', 'Status'),
-            'superadmin' => Yii::t('id5.rbac', 'Superadmin'),
-            'created_at' => Yii::t('id5.rbac', 'Created At'),
-            'updated_at' => Yii::t('id5.rbac', 'Updated At'),
+            'id' => Module::t('app', 'ID'),
+            'username' => Module::t('app', 'Username'),
+            'password_hash' => Module::t('app', 'Password Hash'),
+            'email' => Module::t('app', 'Email'),
+            'auth_key' => Module::t('app', 'Auth Key'),
+            'password_reset_token' => Module::t('app', 'Password Reset Token'),
+            'status' => Module::t('app', 'Status'),
+            'superadmin' => Module::t('app', 'Superadmin'),
+            'created_at' => Module::t('app', 'Created At'),
+            'updated_at' => Module::t('app', 'Updated At'),
         ];
     }
 

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use id5\rbac\Module;
 
 /* @var $this yii\web\View */
 /* @var $model id5\rbac\models\User */
@@ -31,7 +32,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'updated_at')->textInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('id5.rbac', 'Save'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Module::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

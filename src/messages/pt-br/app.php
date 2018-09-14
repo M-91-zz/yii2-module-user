@@ -17,14 +17,14 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Auth Key' => '',
-    'Created At' => '',
+    'Auth Key' => 'Chave de autenticação',
     'Email' => '',
     'ID' => '',
-    'Password Hash' => '',
-    'Password Reset Token' => '',
+    'Password Hash' => 'Hash de senha',
+    'Password Reset Token' => 'Token de alteração de senha',
     'Status' => '',
     'Superadmin' => '',
-    'Updated At' => '',
-    'Username' => '',
+    'Created At' => 'Criado em',
+    'Updated At' => 'Atualizado em',
+    'Username' => 'Usuário',
 ];

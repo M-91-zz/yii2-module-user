@@ -1,16 +1,17 @@
 <?php
 
 use yii\helpers\Html;
+use id5\rbac\Module;
 
 /* @var $this yii\web\View */
 /* @var $model id5\rbac\models\User */
 
-$this->title = Yii::t('id5.rbac', 'Update User: ' . $model->id, [
+$this->title = Module::t('app', 'Update User: ' . $model->id, [
     'nameAttribute' => '' . $model->id,
 ]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('id5.rbac', 'Users'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Module::t('app', 'Users'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('id5.rbac', 'Update');
+$this->params['breadcrumbs'][] = Module::t('app', 'Update');
 ?>
 <div class="user-update">
 
