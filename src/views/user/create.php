@@ -1,10 +1,10 @@
 <?php
 
 use yii\helpers\Html;
-use id5\rbac\Module;
+use marcelodeandrade\UserModule\Module;
 
 /* @var $this yii\web\View */
-/* @var $model id5\rbac\models\User */
+/* @var $model marcelodeandrade\UserModule\models\User */
 
 $this->title = Module::t('app', 'Create User');
 $this->params['breadcrumbs'][] = ['label' => Module::t('app', 'Users'), 'url' => ['index']];

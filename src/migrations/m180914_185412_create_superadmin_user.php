@@ -1,7 +1,7 @@
 <?php
 
 use yii\db\Migration;
-use id5\rbac\models\User;
+use marcelodeandrade\UserModule\models\User;
 
 /**
  * Class m180914_185412_create_superadmin_user

@@ -1,5 +1,5 @@
 <?php
-namespace id5\rbac\models;
+namespace marcelodeandrade\UserModule\models;
 
 use Yii;
 use yii\base\Model;

@@ -3,10 +3,10 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
-use id5\rbac\Module;
+use marcelodeandrade\UserModule\Module;
 
 /* @var $this yii\web\View */
-/* @var $searchModel id5\rbac\models\search\User */
+/* @var $searchModel marcelodeandrade\UserModule\models\search\User */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Module::t('app', 'Users');

@@ -1,14 +1,14 @@
 <?php
 
-namespace id5\rbac\models\search;
+namespace marcelodeandrade\UserModule\models\search;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use id5\rbac\models\User as UserModel;
+use marcelodeandrade\UserModule\models\User as UserModel;
 
 /**
- * User represents the model behind the search form of `id5\rbac\models\User`.
+ * User represents the model behind the search form of `marcelodeandrade\UserModule\models\User`.
  */
 class User extends UserModel
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace id5\rbac;
+namespace marcelodeandrade\UserModule;
 
 use Yii;
 
@@ -12,7 +12,7 @@ class Module extends \yii\base\Module
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'id5\rbac\controllers';
+    public $controllerNamespace = 'marcelodeandrade\UserModule\controllers';
 
     /**
      * {@inheritdoc}
@@ -27,24 +27,24 @@ class Module extends \yii\base\Module
 
     public function setLoginUrl()
     {
-        Yii::$app->user->loginUrl = ['/rbac/auth/login'];
+        Yii::$app->user->loginUrl = ['/user-module/auth/login'];
     }
 
     public function registerTranslations()
     {
-        Yii::$app->i18n->translations['id5.rbac'] = [
+        Yii::$app->i18n->translations['module.user'] = [
             'class' => 'yii\i18n\PhpMessageSource',
             'forceTranslation' => true,
             'sourceLanguage' => 'pt-br',
-            'basePath' => '@vendor/id5/yii2-rbac/src/messages',
+            'basePath' => '@vendor/marcelodeandrade/yii2-module-user/src/messages',
             'fileMap' => [
-                'id5.rbac' => 'app.php',
+                'module.user' => 'app.php',
             ],
         ];
     }
 
     public static function t($category, $message, $params = [], $language = null)
     {
-        return Yii::t('id5.rbac', $message, $params, $language);
+        return Yii::t('module.user', $message, $params, $language);
     }
 }

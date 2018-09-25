@@ -1,10 +1,10 @@
 <?php
 
-namespace id5\rbac\controllers;
+namespace marcelodeandrade\UserModule\controllers;
 
 use Yii;
 use yii\web\Controller;
-use id5\rbac\models\LoginForm;
+use marcelodeandrade\UserModule\models\LoginForm;
 
 class AuthController extends Controller
 {

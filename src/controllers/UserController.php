@@ -1,10 +1,10 @@
 <?php
 
-namespace id5\rbac\controllers;
+namespace marcelodeandrade\UserModule\controllers;
 
 use Yii;
-use id5\rbac\models\User;
-use id5\rbac\models\search\User as UserSearch;
+use marcelodeandrade\UserModule\models\User;
+use marcelodeandrade\UserModule\models\search\User as UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -26,6 +26,15 @@ class UserController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => \marcelodeandrade\UserModule\components\AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ]
         ];
     }
 
