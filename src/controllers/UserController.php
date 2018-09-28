@@ -27,7 +27,7 @@ class UserController extends Controller
                 ],
             ],
             'access' => [
-                'class' => \marcelodeandrade\UserModule\components\AccessControl::className(),
+                'class' => \marcelodeandrade\UserModule\filters\AccessControl::className(),
                 'rules' => [
                     [
                         'allow' => true,

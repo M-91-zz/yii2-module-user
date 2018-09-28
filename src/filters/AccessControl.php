@@ -1,9 +1,10 @@
 <?php
 
-namespace marcelodeandrade\UserModule\components;
+namespace marcelodeandrade\UserModule\filters;
 
 use Yii;
 use yii\base\ActionFilter;
+// use yii\filters\AccessControl;
 
 class AccessControl extends \yii\filters\AccessControl
 {
