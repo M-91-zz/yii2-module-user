@@ -12,6 +12,11 @@ class Module extends \yii\base\Module
     /**
      * {@inheritdoc}
      */
+    public $defaultRoute = 'user/index';
+
+    /**
+     * {@inheritdoc}
+     */
     public $controllerNamespace = 'marcelodeandrade\UserModule\controllers';
 
     /**
