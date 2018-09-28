@@ -60,6 +60,7 @@ class User extends UserIdentity
             ]],
             [['username', 'password_hash', 'email'], 'required'],
             [['username', 'password_hash', 'email', 'auth_key', 'password_reset_token'], 'string'],
+            [['email'], 'email'],
             [['status', 'superadmin'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
         ];
@@ -90,5 +91,29 @@ class User extends UserIdentity
     public function isSuperadmin(): bool
     {
         return $this->superadmin;
+    }
+
+    /**
+     * Define labels to status list
+     *
+     * @return array
+     */
+    public static function statusLabelList(): array
+    {
+        return [
+            self::STATUS_ACTIVE => Module::t('app', 'Active'),
+            self::STATUS_DELETED => Module::t('app', 'Deleted'),
+            self::STATUS_UNCONFIRMED => Module::t('app', 'Unconfirmed'),
+        ];
+    }
+
+    /**
+     * Status label
+     *
+     * @return string
+     */
+    public function statusLabel(): string
+    {
+        return self::statusLabelList()[$this->status];
     }
 }
