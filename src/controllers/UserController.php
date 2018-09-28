@@ -3,12 +3,13 @@
 namespace marcelodeandrade\UserModule\controllers;
 
 use Yii;
-use marcelodeandrade\UserModule\models\User;
-use marcelodeandrade\UserModule\models\search\User as UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\filters\AccessControl;
+use marcelodeandrade\UserModule\models\User;
+use marcelodeandrade\UserModule\models\search\User as UserSearch;
+use marcelodeandrade\UserModule\filters\AccessRule;
 /**
  * UserController implements the CRUD actions for User model.
  */
@@ -27,11 +28,14 @@ class UserController extends Controller
                 ],
             ],
             'access' => [
-                'class' => \marcelodeandrade\UserModule\filters\AccessControl::className(),
+                'class' => AccessControl::className(),
+                'ruleConfig' => [
+                    'class' => AccessRule::className(),
+                ],
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['@'],
+                        'roles' => ['admin'],
                     ],
                 ],
             ]
