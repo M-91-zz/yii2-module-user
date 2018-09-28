@@ -15,19 +15,20 @@ class AccessRule extends \yii\filters\AccessRule
             return true;
         
         foreach ($this->roles as $role) {
-            switch ($role) {
-                case 'admin':
-                    if (!$user->isGuest && $user->identity->isSuperadmin()) 
-                        return true;
-                case '?':
-                    if ($user->isGuest) 
-                        return true;
-                case '@':
-                    if (!$user->isGuest) 
-                        return true;
-                default:
-                    if ($user->can($role)) 
-                        return true;
+            if ($role === 'admin' && (!$user->isGuest && $user->identity->isSuperadmin())) {
+                return true;
+            }
+            
+            elseif ($role === '?' && $user->isGuest) {
+                return true;
+            }
+            
+            elseif ($role === '@' && !$user->isGuest) {
+                return true;
+            }
+
+            elseif ($user->can($role)) {
+                return true;
             }
         }
 
