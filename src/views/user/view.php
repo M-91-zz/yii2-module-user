@@ -32,14 +32,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'username',
-            'password_hash',
             'email:email',
-            'auth_key',
-            'password_reset_token',
-            'status',
-            'superadmin',
-            'created_at',
-            'updated_at',
+            [
+                'attribute' => 'status',
+                'value' => function ($model) {
+                    return $model->statusLabel();
+                },
+            ],
+            'superadmin:boolean',
+            'created_at:datetime',
+            'updated_at:datetime',
         ],
     ]) ?>
 

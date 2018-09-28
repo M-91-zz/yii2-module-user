@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use marcelodeandrade\UserModule\Module;
+use marcelodeandrade\UserModule\models\User;
 
 /* @var $this yii\web\View */
 /* @var $searchModel marcelodeandrade\UserModule\models\search\User */
@@ -26,18 +27,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
             'id',
             'username',
-            'password_hash',
             'email:email',
-            'auth_key',
-            //'password_reset_token',
-            //'status',
-            //'superadmin',
-            //'created_at',
-            //'updated_at',
+            [
+                'attribute' => 'status',
+                'value' => function ($model) {
+                    return $model->statusLabel();
+                },
+                'filter' => User::statusLabelList(),
+            ],
+            'superadmin:boolean',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
