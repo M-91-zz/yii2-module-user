@@ -37,4 +37,7 @@ return [
     'Password Reset Token' => 'Token de alteração de senha',
     'Updated At' => 'Atualizado em',
     'Username' => 'Usuário',
+    'Active' => 'Ativo',
+    'Deleted' => 'Bloqueado',
+    'Unconfirmed' => 'Não confirmado',
 ];
