@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use marcelodeandrade\UserModule\Module;
 
 /* @var $this yii\web\View */
-/* @var $model marcelodeandrade\UserModule\models\User */
+/* @var $model marcelodeandrade\UserModule\models\Role */
 
-$this->title = Module::t('app', 'Create User');
-$this->params['breadcrumbs'][] = ['label' => Module::t('app', 'Users'), 'url' => ['index']];
+$this->title = Module::t('app', 'Create Role');
+$this->params['breadcrumbs'][] = ['label' => Module::t('app', 'Roles'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-create">
+<div class="role-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

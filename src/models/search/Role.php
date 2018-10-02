@@ -8,23 +8,10 @@ use yii\data\ArrayDataProvider;
 use yii\db\Query;
 use yii\helpers\ArrayHelper;
 use yii\rbac\Item;
+use marcelodeandrade\UserModule\models\Role as RoleBase;
 
-class Role extends Model
+class Role extends RoleBase
 {
-    /**
-     * @var [string]
-     */
-    public $name;
-
-    /**
-     * @var [string]
-     */
-    public $description;
-
-    /**
-     * @var [string]
-     */
-    public $type;
 
     public $authManager;
 
@@ -53,7 +40,7 @@ class Role extends Model
 
         $query = (new Query)
             ->select('*')
-            ->andWhere(['type' => Item::TYPE_ROLE])
+            ->andWhere(['type' => $this->type])
             ->from($this->authManager->itemTable);
 
         $dataProvider->allModels = $query->all();
