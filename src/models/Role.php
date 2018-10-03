@@ -61,11 +61,15 @@ class Role extends Model
         ];
     }
 
-    public function save()
+    /**
+     * @return boolean
+     */
+    public function save(): bool
     {
         $role = $this->authManager->createRole($this->name);
         $role->description = $this->description;
-        return $this->authManager->add($role);
+
+        return $this->validate() && $this->authManager->add($role);
     }
 
 }

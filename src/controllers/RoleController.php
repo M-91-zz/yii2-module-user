@@ -24,8 +24,8 @@ class RoleController extends Controller
     {
         $model = new Role();
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
-            Yii::$app->session->setFlash('success', "Role created successfuly");
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', "Role created successfully");
             return $this->redirect(['index']);
         }
 
