@@ -42,7 +42,7 @@ class Role extends Model
             [['name', 'description'], 'trim'],
             ['name', function ($attribute, $params, $validator) {
                 if ($this->authManager->getRole($this->name) !== null) {
-                    $this->addError($attribute, Module::t('app', 'Name must be unique. [{name}] already exists.', [
+                    $this->addError($attribute, Module::t('app', 'Role name must be unique. [{name}] already exists', [
                         'name' => $this->name,
                     ]));
                 }

@@ -6,6 +6,7 @@ use Yii;
 use yii\web\Controller;
 use marcelodeandrade\UserModule\models\search\Role as RoleSearch;
 use marcelodeandrade\UserModule\models\Role;
+use marcelodeandrade\UserModule\Module;
 
 class RoleController extends Controller
 {
@@ -25,7 +26,7 @@ class RoleController extends Controller
         $model = new Role();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', "Role created successfully");
+            Yii::$app->session->setFlash('success', Module::t('app', 'Role created successfully'));
             return $this->redirect(['index']);
         }
 

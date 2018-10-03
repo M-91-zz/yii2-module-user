@@ -40,4 +40,13 @@ return [
     'Active' => 'Ativo',
     'Deleted' => 'Bloqueado',
     'Unconfirmed' => 'Não confirmado',
+    'Role created successfully' => 'Função criada com sucesso',
+    'Create' => 'Criar',
+    'Role' => 'Função',
+    'Roles' => 'Funções',
+    'Create Role' => 'Criar Função',
+    'Role name must be unique. [{name}] already exists' => 'Nome da função deve ser única. [{name}] já existe',
+    'Name' => 'Nome',
+    'Description' => 'Descrição',
+    'Rule' => 'Regra',
 ];
