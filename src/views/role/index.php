@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class'      => 'yii\grid\ActionColumn',
                 'template'   => '{update} {delete}',
                 'urlCreator' => function ($action, $model) {
-                    return Url::to(['/rbac/role/' . $action, 'name' => $model['name']]);
+                    return Url::to(['role/' . $action, 'name' => $model['name']]);
                 }
             ]
         ],

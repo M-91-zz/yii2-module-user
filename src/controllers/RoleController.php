@@ -34,4 +34,16 @@ class RoleController extends Controller
             'model' => $model,
         ]);
     }
+
+    public function actionDelete(string $name)
+    {
+        $authManager = Yii::$app->authManager;
+        $role = $authManager->getRole($name);
+
+        if ($role !== null && $authManager->remove($role)) {
+            Yii::$app->session->setFlash('success', Module::t('app', 'Role deleted successfully'));
+        }
+
+        $this->redirect(['index']);
+    }
 }

@@ -41,6 +41,7 @@ return [
     'Deleted' => 'Bloqueado',
     'Unconfirmed' => 'Não confirmado',
     'Role created successfully' => 'Função criada com sucesso',
+    'Role deleted successfully' => 'Função removida com sucesso',
     'Create' => 'Criar',
     'Role' => 'Função',
     'Roles' => 'Funções',
