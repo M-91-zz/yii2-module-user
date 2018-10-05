@@ -4,12 +4,42 @@ namespace marcelodeandrade\UserModule\controllers;
 
 use Yii;
 use yii\web\Controller;
+use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use marcelodeandrade\UserModule\Module;
 use marcelodeandrade\UserModule\models\search\Role as RoleSearch;
 use marcelodeandrade\UserModule\models\Role;
-use marcelodeandrade\UserModule\Module;
+use marcelodeandrade\UserModule\filters\AccessRule;
 
 class RoleController extends Controller
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'ruleConfig' => [
+                    'class' => AccessRule::className(),
+                ],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['admin'],
+                    ],
+                ],
+            ]
+        ];
+    }
+
     public function actionIndex()
     {
         $searchModel = new RoleSearch();
