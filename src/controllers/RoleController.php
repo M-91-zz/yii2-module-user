@@ -13,6 +13,9 @@ use M91\UserModule\filters\AccessRule;
 
 class RoleController extends Controller
 {
+
+    private $authManager;
+
     /**
      * {@inheritdoc}
      */
@@ -38,6 +41,14 @@ class RoleController extends Controller
                 ],
             ]
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function init()
+    {
+        $this->authManager = Yii::$app->authManager;
     }
 
     public function actionIndex()
@@ -67,13 +78,28 @@ class RoleController extends Controller
 
     public function actionDelete(string $name)
     {
-        $authManager = Yii::$app->authManager;
-        $role = $authManager->getRole($name);
+        $role = $this->authManager->getRole($name);
 
-        if ($role !== null && $authManager->remove($role)) {
+        if ($role !== null && $this->authManager->remove($role)) {
             Yii::$app->session->setFlash('success', Module::t('app', 'Role deleted successfully'));
         }
 
         $this->redirect(['index']);
+    }
+
+    public function actionView(string $name)
+    {
+        $role = $this->authManager->getRole($name);
+
+        if ($role !== null) {
+            $permissions = $this->authManager->getPermissionsByRole($name);
+
+            return $this->render('view', [
+                'role' => $role,
+                'permissions' => $permissions,
+            ]);
+        }
+
+        throw new \yii\web\NotFoundHttpException();
     }
 }
