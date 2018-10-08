@@ -41,8 +41,8 @@ class Permission extends Model
             [['name', 'description'], 'string'],
             [['name', 'description'], 'trim'],
             ['name', function ($attribute, $params, $validator) {
-                if ($this->authManager->getRole($this->name) !== null) {
-                    $this->addError($attribute, Module::t('app', 'Role name must be unique. [{name}] already exists', [
+                if ($this->authManager->getPermission($this->name) !== null) {
+                    $this->addError($attribute, Module::t('app', 'Permission name must be unique. [{name}] already exists', [
                         'name' => $this->name,
                     ]));
                 }
@@ -74,7 +74,7 @@ class Permission extends Model
 
     public function permissionList()
     {
-        
+
     }
 
 }

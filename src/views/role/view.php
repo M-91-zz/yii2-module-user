@@ -1,10 +1,8 @@
 <?php
 
 use yii\helpers\Html;
+use yii\widgets\ListView;
 use M91\UserModule\Module;
-
-/* @var $this yii\web\View */
-/* @var $role M91\UserModule\models\Role */
 
 $this->title = Module::t('app', 'Role: ' . $role->name, [
     'nameAttribute' => '' . $role->name,
@@ -17,8 +15,11 @@ $this->params['breadcrumbs'][] = Module::t('app', 'Update');
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?php
-    var_dump($permissions);
+    <?= ListView::widget([
+        'layout' => '<h2>Permissions</h2>{items}',
+        'dataProvider' => $permissions,
+        'itemView' => '_permission',
+    ]);
     ?>
 
 </div>

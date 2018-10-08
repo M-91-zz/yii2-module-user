@@ -6,8 +6,10 @@ use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\data\ArrayDataProvider;
 use M91\UserModule\Module;
 use M91\UserModule\models\search\Role as RoleSearch;
+use M91\UserModule\models\search\Permission as PermissionSearch;
 use M91\UserModule\models\Role;
 use M91\UserModule\filters\AccessRule;
 
@@ -93,10 +95,12 @@ class RoleController extends Controller
 
         if ($role !== null) {
             $permissions = $this->authManager->getPermissionsByRole($name);
+            $permissionDataProvider = new ArrayDataProvider;
+            $permissionDataProvider->allModels = $permissions;
 
             return $this->render('view', [
                 'role' => $role,
-                'permissions' => $permissions,
+                'permissions' => $permissionDataProvider,
             ]);
         }
 
