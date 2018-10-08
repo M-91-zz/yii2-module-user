@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'description',
             [
                 'class'      => 'yii\grid\ActionColumn',
-                'template'   => '{update} {delete}',
+                'template'   => '{view} {update} {delete}',
                 'urlCreator' => function ($action, $model) {
                     return Url::to(['role/' . $action, 'name' => $model['name']]);
                 }
