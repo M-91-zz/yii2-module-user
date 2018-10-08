@@ -8,7 +8,7 @@ $this->title = Module::t('app', 'Role: ' . $role->name, [
     'nameAttribute' => '' . $role->name,
 ]);
 $this->params['breadcrumbs'][] = ['label' => Module::t('app', 'Roles'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $role->name, 'url' => ['view', 'id' => $role->name]];
+$this->params['breadcrumbs'][] = ['label' => $role->name, 'url' => ['view', 'name' => $role->name]];
 $this->params['breadcrumbs'][] = Module::t('app', 'Update');
 ?>
 <div class="role-update">

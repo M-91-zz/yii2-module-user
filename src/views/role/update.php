@@ -10,7 +10,7 @@ $this->title = Module::t('app', 'Update Role: ' . $model->id, [
     'nameAttribute' => '' . $model->id,
 ]);
 $this->params['breadcrumbs'][] = ['label' => Module::t('app', 'Roles'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'name' => $model->id]];
 $this->params['breadcrumbs'][] = Module::t('app', 'Update');
 ?>
 <div class="role-update">
