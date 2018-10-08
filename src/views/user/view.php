@@ -2,10 +2,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use marcelodeandrade\UserModule\Module;
+use M91\UserModule\Module;
 
 /* @var $this yii\web\View */
-/* @var $model marcelodeandrade\UserModule\models\User */
+/* @var $model M91\UserModule\models\User */
 
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => Module::t('app', 'Users'), 'url' => ['index']];

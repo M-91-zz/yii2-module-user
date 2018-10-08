@@ -1,11 +1,11 @@
 <?php 
 
-namespace marcelodeandrade\UserModule\components;
+namespace M91\UserModule\components;
 
 use Yii;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
-use marcelodeandrade\UserModule\models\User;
+use M91\UserModule\models\User;
 
 abstract class UserIdentity extends ActiveRecord implements IdentityInterface
 {

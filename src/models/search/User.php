@@ -1,14 +1,14 @@
 <?php
 
-namespace marcelodeandrade\UserModule\models\search;
+namespace M91\UserModule\models\search;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use marcelodeandrade\UserModule\models\User as UserModel;
+use M91\UserModule\models\User as UserModel;
 
 /**
- * User represents the model behind the search form of `marcelodeandrade\UserModule\models\User`.
+ * User represents the model behind the search form of `M91\UserModule\models\User`.
  */
 class User extends UserModel
 {

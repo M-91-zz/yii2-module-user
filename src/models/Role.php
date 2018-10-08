@@ -1,11 +1,11 @@
 <?php
 
-namespace marcelodeandrade\UserModule\models;
+namespace M91\UserModule\models;
 
 use Yii;
 use yii\base\Model;
 use yii\rbac\Item;
-use marcelodeandrade\UserModule\Module;
+use M91\UserModule\Module;
 
 class Role extends Model
 {

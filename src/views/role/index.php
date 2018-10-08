@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
-use marcelodeandrade\UserModule\Module;
-use marcelodeandrade\UserModule\models\User;
+use M91\UserModule\Module;
+use M91\UserModule\models\User;
 
 /* @var $this yii\web\View */
-/* @var $searchModel marcelodeandrade\UserModule\models\search\User */
+/* @var $searchModel M91\UserModule\models\search\User */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Module::t('app', 'Roles');

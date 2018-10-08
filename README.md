@@ -24,7 +24,7 @@ Define `User` identity
 ```
 // ...
 'user' => [
-    'identityClass' => 'marcelodeandrade\UserModule\models\User',
+    'identityClass' => 'M91\UserModule\models\User',
     'enableAutoLogin' => true,
 ],
 // ...
@@ -34,7 +34,7 @@ Define `User` identity
 ```
 'modules' => [
     'user-module' => [
-        'class' => 'marcelodeandrade\UserModule\Module',
+        'class' => 'M91\UserModule\Module',
     ]
 ]
 ```

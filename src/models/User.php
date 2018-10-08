@@ -1,10 +1,10 @@
 <?php
-namespace marcelodeandrade\UserModule\models;
+namespace M91\UserModule\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
-use marcelodeandrade\UserModule\components\UserIdentity;
-use marcelodeandrade\UserModule\Module;
+use M91\UserModule\components\UserIdentity;
+use M91\UserModule\Module;
 
 /**
  * This is the model class for table "{{%user}}".

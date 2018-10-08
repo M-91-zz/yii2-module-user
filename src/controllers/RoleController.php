@@ -1,15 +1,15 @@
 <?php
 
-namespace marcelodeandrade\UserModule\controllers;
+namespace M91\UserModule\controllers;
 
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use marcelodeandrade\UserModule\Module;
-use marcelodeandrade\UserModule\models\search\Role as RoleSearch;
-use marcelodeandrade\UserModule\models\Role;
-use marcelodeandrade\UserModule\filters\AccessRule;
+use M91\UserModule\Module;
+use M91\UserModule\models\search\Role as RoleSearch;
+use M91\UserModule\models\Role;
+use M91\UserModule\filters\AccessRule;
 
 class RoleController extends Controller
 {

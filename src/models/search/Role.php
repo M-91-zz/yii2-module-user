@@ -1,6 +1,6 @@
 <?php
 
-namespace marcelodeandrade\UserModule\models\search;
+namespace M91\UserModule\models\search;
 
 use Yii;
 use yii\base\Model;
@@ -8,7 +8,7 @@ use yii\data\ArrayDataProvider;
 use yii\db\Query;
 use yii\helpers\ArrayHelper;
 use yii\rbac\Item;
-use marcelodeandrade\UserModule\models\Role as RoleBase;
+use M91\UserModule\models\Role as RoleBase;
 
 class Role extends RoleBase
 {

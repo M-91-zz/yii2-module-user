@@ -1,6 +1,6 @@
 <?php
 
-namespace marcelodeandrade\UserModule;
+namespace M91\UserModule;
 
 use Yii;
 
@@ -17,7 +17,7 @@ class Module extends \yii\base\Module
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'marcelodeandrade\UserModule\controllers';
+    public $controllerNamespace = 'M91\UserModule\controllers';
 
     /**
      * {@inheritdoc}
@@ -41,7 +41,7 @@ class Module extends \yii\base\Module
             'class' => 'yii\i18n\PhpMessageSource',
             'forceTranslation' => true,
             'sourceLanguage' => 'pt-br',
-            'basePath' => '@vendor/marcelodeandrade/yii2-module-user/src/messages',
+            'basePath' => '@vendor/M91/yii2-module-user/src/messages',
             'fileMap' => [
                 'module.user' => 'app.php',
             ],

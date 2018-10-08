@@ -1,6 +1,6 @@
 <?php
 
-namespace marcelodeandrade\UserModule\filters;
+namespace M91\UserModule\filters;
 
 use Yii;
 

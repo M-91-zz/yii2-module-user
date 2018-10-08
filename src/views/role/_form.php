@@ -2,10 +2,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use marcelodeandrade\UserModule\Module;
+use M91\UserModule\Module;
 
 /* @var $this yii\web\View */
-/* @var $model marcelodeandrade\UserModule\models\Role */
+/* @var $model M91\UserModule\models\Role */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace marcelodeandrade\UserModule\controllers;
+namespace M91\UserModule\controllers;
 
 use Yii;
 use yii\web\Controller;
-use marcelodeandrade\UserModule\models\LoginForm;
+use M91\UserModule\models\LoginForm;
 
 class AuthController extends Controller
 {

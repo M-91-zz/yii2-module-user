@@ -1,5 +1,5 @@
 {
-    "name": "marcelodeandrade/yii2-module-user",
+    "name": "M91/yii2-module-user",
     "description": "User management",
     "type": "yii2-extension",
     "keywords": ["yii2","extension","rbac","user management"],
@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "marcelodeandrade\\UserModule\\": "src/"
+            "M91\\UserModule\\": "src/"
         }
     }
 }

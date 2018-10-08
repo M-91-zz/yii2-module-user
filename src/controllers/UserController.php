@@ -1,15 +1,15 @@
 <?php
 
-namespace marcelodeandrade\UserModule\controllers;
+namespace M91\UserModule\controllers;
 
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use marcelodeandrade\UserModule\models\User;
-use marcelodeandrade\UserModule\models\search\User as UserSearch;
-use marcelodeandrade\UserModule\filters\AccessRule;
+use M91\UserModule\models\User;
+use M91\UserModule\models\search\User as UserSearch;
+use M91\UserModule\filters\AccessRule;
 /**
  * UserController implements the CRUD actions for User model.
  */
