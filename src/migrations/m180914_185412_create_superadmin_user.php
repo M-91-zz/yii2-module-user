@@ -1,7 +1,7 @@
 <?php
 
 use yii\db\Migration;
-use marcelodeandrade\UserModule\models\User;
+use M91\UserModule\models\User;
 
 /**
  * Class m180914_185412_create_superadmin_user
