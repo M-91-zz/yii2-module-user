@@ -11,6 +11,9 @@ $this->params['breadcrumbs'][] = ['label' => Module::t('app', 'Roles'), 'url' =>
 $this->params['breadcrumbs'][] = ['label' => $role->name, 'url' => ['view', 'name' => $role->name]];
 $this->params['breadcrumbs'][] = Module::t('app', 'Update');
 ?>
+
+<?php $this->beginContent('@M91/UserModule/views/layout.php') ?>
+
 <div class="role-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -23,3 +26,5 @@ $this->params['breadcrumbs'][] = Module::t('app', 'Update');
     ?>
 
 </div>
+
+<?php $this->endContent() ?>

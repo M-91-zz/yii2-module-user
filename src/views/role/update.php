@@ -13,12 +13,15 @@ $this->params['breadcrumbs'][] = ['label' => Module::t('app', 'Roles'), 'url' =>
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'name' => $model->id]];
 $this->params['breadcrumbs'][] = Module::t('app', 'Update');
 ?>
-<div class="role-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<?php $this->beginContent('@M91/UserModule/views/layout.php') ?>
+
+<div class="role-update">
 
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
 
 </div>
+
+<?php $this->endContent() ?>

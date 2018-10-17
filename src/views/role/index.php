@@ -14,15 +14,12 @@ use M91\UserModule\models\User;
 $this->title = Module::t('app', 'Roles');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<?php $this->beginContent('@M91/UserModule/views/layout.php') ?>
+
 <div class="user-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a(Module::t('app', 'Create Role'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -42,3 +39,5 @@ $this->params['breadcrumbs'][] = $this->title;
     ]); ?>
     <?php Pjax::end(); ?>
 </div>
+
+<?php $this->endContent() ?>
