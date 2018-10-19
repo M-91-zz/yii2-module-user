@@ -89,21 +89,4 @@ class RoleController extends Controller
         $this->redirect(['index']);
     }
 
-    public function actionView(string $name)
-    {
-        $role = $this->authManager->getRole($name);
-
-        if ($role !== null) {
-            $permissions = $this->authManager->getPermissionsByRole($name);
-            $permissionDataProvider = new ArrayDataProvider;
-            $permissionDataProvider->allModels = $permissions;
-
-            return $this->render('view', [
-                'role' => $role,
-                'permissions' => $permissionDataProvider,
-            ]);
-        }
-
-        throw new \yii\web\NotFoundHttpException();
-    }
 }
