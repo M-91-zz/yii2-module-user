@@ -59,12 +59,17 @@ class AuthItem extends \yii\base\Model
      */
     public $authManager;
 
+    /**
+     * @var string $authItem
+     */
+    public $authItem;
+    
     public function __construct($authItem)
     {
         $this->authManager = Yii::$app->authManager;
+        $this->authItem = $authItem;
 
-        $properties = get_object_vars($authItem);
-        if ($properties) {
+        if (!is_null($authItem) && $properties = get_object_vars($authItem)) {
             foreach ($properties as $key => $value) {
                 $this->$key = $value;
             }
@@ -107,5 +112,40 @@ class AuthItem extends \yii\base\Model
         ];
     }
 
+    /**
+     * @return boolean
+     */
+    public function isNewRecord(): bool
+    {
+        return $this->authItem === null;
+    }
 
+    public function fillAuthItem(Item &$authItem): void
+    {
+        $authItem->name = $this->name;
+        $authItem->type = $this->type;
+        $authItem->description = $this->description;
+        $authItem->ruleName = $this->ruleName;
+        $authItem->data = $this->data;
+        $authItem->createdAt = $this->createdAt;
+        $authItem->updatedAt = $this->updatedAt;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function save(): bool
+    {
+        $authItem = ($this->type === Item::TYPE_ROLE) 
+            ? $this->authManager->createRole($this->name)
+            : $this->authManager->createPermission($this->name);
+
+        $this->fillAuthItem($authItem);
+
+        if ($this->isNewRecord()) {
+            return $this->authManager->add($authItem);
+        }
+        
+        return $this->authManager->update($this->authItem->name, $authItem);
+    }
 }
