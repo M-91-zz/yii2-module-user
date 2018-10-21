@@ -85,7 +85,7 @@ class RoleController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success', Module::t('app', 'Role update successfully'));
-            return $this->redirect(['view', 'id' => $model->name]);
+            return $this->redirect(['index']);
         }
         return $this->render('update', ['model' => $model]);
     }
