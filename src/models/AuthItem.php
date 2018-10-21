@@ -80,7 +80,6 @@ class AuthItem extends \yii\base\Model
             [['name', 'type', 'description'], 'required'],
             [['name', 'description', 'ruleName', 'data'], 'string'],
             [['type', 'createdAt', 'updatedAt'], 'integer'],
-            [['name'], 'unique'],
             [['name', 'description'], 'trim'],
             ['name', function ($attribute, $params, $validator) {
                 if ($this->authManager->getRole($this->name) !== null || $this->authManager->getPermission($this->name) !== null) {
