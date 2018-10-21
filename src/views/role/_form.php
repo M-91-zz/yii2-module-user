@@ -13,7 +13,7 @@ use M91\UserModule\Module;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput() ?>
+    <?= $form->field($model, 'name')->textInput(['disabled' => !$model->isNewRecord()]) ?>
 
     <?= $form->field($model, 'description')->textInput() ?>
 
