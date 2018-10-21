@@ -11,6 +11,7 @@ use M91\UserModule\Module;
 use M91\UserModule\models\search\Role as RoleSearch;
 use M91\UserModule\models\search\Permission as PermissionSearch;
 use M91\UserModule\models\Role;
+use M91\UserModule\models\AuthItem;
 use M91\UserModule\filters\AccessRule;
 
 class RoleController extends Controller
@@ -66,7 +67,7 @@ class RoleController extends Controller
 
     public function actionCreate()
     {
-        $model = new Role();
+        $model = new Role(null);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success', Module::t('app', 'Role created successfully'));
@@ -78,6 +79,17 @@ class RoleController extends Controller
         ]);
     }
 
+    public function actionUpdate(string $name)
+    {
+        $model = $this->findModel($name);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', Module::t('app', 'Role update successfully'));
+            return $this->redirect(['view', 'id' => $model->name]);
+        }
+        return $this->render('update', ['model' => $model]);
+    }
+
     public function actionDelete(string $name)
     {
         $role = $this->authManager->getRole($name);
@@ -87,6 +99,17 @@ class RoleController extends Controller
         }
 
         $this->redirect(['index']);
+    }
+
+    protected function findModel(string $name)
+    {
+        $role = $this->authManager->getRole($name);
+
+        if (empty($role)) {
+            throw new \yii\web\NotFoundHttpException();
+        }
+
+        return new AuthItem($role);
     }
 
 }
