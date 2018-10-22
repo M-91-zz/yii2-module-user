@@ -45,6 +45,8 @@ return [
     'Create' => 'Criar',
     'Role' => 'Função',
     'Roles' => 'Funções',
+    'Permission' => 'Permissão',
+    'Permissions' => 'Permissões',
     'Create Role' => 'Criar Função',
     'Role name must be unique. [{name}] already exists' => 'Nome da função deve ser única. [{name}] já existe',
     'Name' => 'Nome',
