@@ -3,6 +3,7 @@
 namespace M91\UserModule\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 use yii\rbac\Item;
 use M91\UserModule\Module;
 
@@ -63,13 +64,20 @@ class AuthItem extends \yii\base\Model
      * @var string $authItem
      */
     public $authItem;
+
+    /**
+     * @var array $items
+     */
+    public $items;
     
-    public function __construct($authItem)
+    public function __construct($authItem = null)
     {
         $this->authManager = Yii::$app->authManager;
         $this->authItem = $authItem;
-
+        
         if (!is_null($authItem) && $properties = get_object_vars($authItem)) {
+            $this->items = $this->getChildren();
+            
             foreach ($properties as $key => $value) {
                 $this->$key = $value;
             }
@@ -86,6 +94,7 @@ class AuthItem extends \yii\base\Model
             [['name', 'description', 'ruleName', 'data'], 'string'],
             [['type', 'createdAt', 'updatedAt'], 'integer'],
             [['name', 'description'], 'trim'],
+            [['items'], 'safe'],
             ['name', function ($attribute, $params, $validator) {
                 if ($this->authManager->getRole($this->name) !== null || $this->authManager->getPermission($this->name) !== null) {
                     $this->addError($attribute, Module::t('app', 'Item name must be unique. [{name}] already exists', [
@@ -120,6 +129,10 @@ class AuthItem extends \yii\base\Model
         return $this->authItem === null;
     }
 
+    /**
+     * @param Item $authItem
+     * @return void
+     */
     public function fillAuthItem(Item &$authItem): void
     {
         $authItem->name = $this->name;
@@ -148,4 +161,31 @@ class AuthItem extends \yii\base\Model
         
         return $this->authManager->update($this->authItem->name, $authItem);
     }
+
+    /**
+     * @return array
+     */
+    public function getItems(): array
+    {
+        $items[Module::t('app', 'Roles')] = ArrayHelper::map(
+            $this->authManager->getRoles(), 'name', 'name'
+        );
+
+        $items[Module::t('app', 'Permissions')] = ArrayHelper::map(
+            $this->authManager->getPermissions(), 'name', 'name'
+        );
+
+        return $items;
+    }
+
+    /**
+     * @return array
+     */
+    public function getChildren(): array
+    {
+        return ArrayHelper::map(
+            $this->authManager->getChildren($this->authItem->name), 'name', 'name'
+        );
+    }
+
 }
