@@ -69,6 +69,13 @@ class AuthItem extends \yii\base\Model
      * @var array $items
      */
     public $items;
+
+    public const EVENT_SAVE = 'event-save';
+
+    public function init(){
+        parent::init();
+        $this->on(self::EVENT_SAVE, [$this, 'addChild']);
+    }
     
     public function __construct($authItem = null)
     {
@@ -156,10 +163,15 @@ class AuthItem extends \yii\base\Model
         $this->fillAuthItem($authItem);
 
         if ($this->isNewRecord()) {
-            return $this->authManager->add($authItem);
+            $return = $this->authManager->add($authItem);
         }
-        
-        return $this->authManager->update($this->authItem->name, $authItem);
+        $return = $this->authManager->update($this->authItem->name, $authItem);
+
+        if ($return) {
+            $this->addChild();
+        }
+
+        return $return;
     }
 
     /**
@@ -188,4 +200,31 @@ class AuthItem extends \yii\base\Model
         );
     }
 
+    /**
+     * @param Item $parent
+     * @return boolean
+     */
+    public function removeChildren(Item $parent): bool
+    {
+        return $this->authManager->removeChildren($parent);
+    }
+
+    /**
+     * @return void
+     */
+    public function addChild(): void
+    {
+        if ($this->items) {
+            $this->removeChildren($this->authItem);
+
+            foreach ($this->items as $name) {
+                $child = $this->authManager->getPermission($name);
+                if (empty($child) && $this->type == Item::TYPE_ROLE) {
+                    $child = $this->authManager->getRole($name);
+                }
+                $this->authManager->addChild($this->authItem, $child);
+            }
+        }
+    }
+    
 }
