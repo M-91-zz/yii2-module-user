@@ -67,7 +67,7 @@ class RoleController extends Controller
 
     public function actionCreate()
     {
-        $model = new Role(null);
+        $model = new Role();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success', Module::t('app', 'Role created successfully'));
