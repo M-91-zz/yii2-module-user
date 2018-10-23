@@ -103,8 +103,11 @@ class AuthItem extends \yii\base\Model
             [['name', 'description'], 'trim'],
             [['items'], 'safe'],
             ['name', function ($attribute, $params, $validator) {
-                if ($this->authManager->getRole($this->name) !== null || $this->authManager->getPermission($this->name) !== null) {
-                    $this->addError($attribute, Module::t('app', 'Item name must be unique. [{name}] already exists', [
+                if (
+                    $this->authManager->getRole($this->name) !== null 
+                    || $this->authManager->getPermission($this->name) !== null
+                ) {
+                    $this->addError($attribute, Module::t('app', 'Item name must be unique. [{name}] already exists.', [
                         'name' => $this->name,
                     ]));
                 }
