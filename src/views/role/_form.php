@@ -21,7 +21,7 @@ use kartik\select2\Select2;
     <?= $form->field($model, 'items')->widget(Select2::classname(), [
         'data' => $model->getItems(),
         'options' => [
-            'placeholder' => 'Select a color ...',
+            'placeholder' => Module::t('app', 'Select'),
             'multiple' => true
         ],
         'pluginOptions' => [
