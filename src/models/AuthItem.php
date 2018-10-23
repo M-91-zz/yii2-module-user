@@ -70,13 +70,17 @@ class AuthItem extends \yii\base\Model
      */
     public $items;
 
+    public $subRoles;
+    public $permissions;
+
     public function __construct($authItem = null)
     {
         $this->authManager = Yii::$app->authManager;
         $this->authItem = $authItem;
         
         if (!is_null($authItem) && $properties = get_object_vars($authItem)) {
-            $this->items = $this->getChildren();
+            $this->subRoles = $this->getChildren(Item::TYPE_ROLE);
+            $this->permissions = $this->getChildren(Item::TYPE_PERMISSION);
             
             foreach ($properties as $key => $value) {
                 $this->$key = $value;
@@ -94,7 +98,7 @@ class AuthItem extends \yii\base\Model
             [['name', 'description', 'ruleName', 'data'], 'string'],
             [['type', 'createdAt', 'updatedAt'], 'integer'],
             [['name', 'description'], 'trim'],
-            [['items'], 'safe'],
+            [['items', 'subRoles', 'permissions'], 'safe'],
             ['name', function ($attribute, $params, $validator) {
                 if (
                     $this->authManager->getRole($this->name) !== null
@@ -167,51 +171,63 @@ class AuthItem extends \yii\base\Model
         } else {
             $return = $this->authManager->update($this->authItem->name, $authItem);
         }
-
+        
         if ($return) {
-            $this->addChild();
+            $this->saveChildren();
         }
 
         return $return;
     }
 
     /**
+     * @param integer $type
      * @return array
      */
-    public function getItems(): array
+    public function getAuthItems(int $type): array
     {
-        $items[Module::t('app', 'Roles')] = ArrayHelper::map(
-            $this->authManager->getRoles(),
-            'name',
-            'name'
-        );
+        $authItem = ($type === Item::TYPE_ROLE)
+            ? $this->authManager->getRoles()
+            : $this->authManager->getPermissions();
 
-        $items[Module::t('app', 'Permissions')] = ArrayHelper::map(
-            $this->authManager->getPermissions(),
+        $roles = ArrayHelper::map(
+            $authItem,
             'name',
             'name'
         );
         
-        if (!$this->isNewRecord()) {
-            $items = array_map(function ($item) {
-                unset($item[$this->authItem->name]);
-                return $item;
-            }, $items);
+        if (!is_null($this->authItem)) {
+            $roles = array_filter($roles, function($name) {
+                return $name !== $this->authItem->name ? $name : false;
+            });
         }
 
-        return $items;
+        return $roles;
     }
 
     /**
+     * @param integer $type
      * @return array
      */
-    public function getChildren(): array
+    public function getChildren(int $type): array
     {
+        $authItem = ($type === Item::TYPE_ROLE)
+        ? $this->authManager->getChildRoles($this->authItem->name)
+        : $this->authManager->getPermissionsByRole($this->authItem->name);
+
         return ArrayHelper::map(
-            $this->authManager->getChildren($this->authItem->name),
+            $authItem,
             'name',
             'name'
         );
+    }
+
+    public function saveChildren()
+    {
+        if (!is_null($this->authItem)) {
+            $this->removeChildren($this->authItem);
+        }
+        $this->addChild($this->permissions);
+        $this->addChild($this->subRoles);
     }
 
     /**
@@ -224,21 +240,17 @@ class AuthItem extends \yii\base\Model
     }
 
     /**
+     * @param array|null $items
      * @return void
      */
-    public function addChild(): void
+    public function addChild($items): void
     {
-        if ($this->items) {
-            if (!$this->isNewRecord()) {
-                $this->removeChildren($this->authItem);
-            }
-
-            foreach ($this->items as $name) {
+        if ($items) {
+            foreach ($items as $name) {
                 $child = $this->authManager->getPermission($name);
-                if (empty($child) && $this->type == Item::TYPE_ROLE) {
+                if (empty($child)) {
                     $child = $this->authManager->getRole($name);
                 }
-
                 if ($this->authManager->canAddChild($this->authItem, $child)) {
                     $this->authManager->addChild($this->authItem, $child);
                 }
