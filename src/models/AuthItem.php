@@ -200,10 +200,12 @@ class AuthItem extends \yii\base\Model
             'name'
         );
         
-        $items = array_map(function ($item) {
-            unset($item[$this->authItem->name]);
-            return $item;
-        }, $items);
+        if (!$this->isNewRecord()) {
+            $items = array_map(function ($item) {
+                unset($item[$this->authItem->name]);
+                return $item;
+            }, $items);
+        }
 
         return $items;
     }
@@ -235,7 +237,9 @@ class AuthItem extends \yii\base\Model
     public function addChild(): void
     {
         if ($this->items) {
-            $this->removeChildren($this->authItem);
+            if (!$this->isNewRecord()) {
+                $this->removeChildren($this->authItem);
+            }
 
             foreach ($this->items as $name) {
                 $child = $this->authManager->getPermission($name);
