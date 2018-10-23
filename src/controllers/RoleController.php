@@ -108,6 +108,6 @@ class RoleController extends Controller
             throw new \yii\web\NotFoundHttpException();
         }
 
-        return new AuthItem($role);
+        return new Role($role);
     }
 }
