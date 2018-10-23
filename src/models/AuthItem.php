@@ -194,6 +194,11 @@ class AuthItem extends \yii\base\Model
         $items[Module::t('app', 'Permissions')] = ArrayHelper::map(
             $this->authManager->getPermissions(), 'name', 'name'
         );
+        
+        $items = array_map(function ($item) {
+            unset($item[$this->authItem->name]);
+            return $item;
+        }, $items);
 
         return $items;
     }
