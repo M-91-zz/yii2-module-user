@@ -235,7 +235,10 @@ class AuthItem extends \yii\base\Model
                 if (empty($child) && $this->type == Item::TYPE_ROLE) {
                     $child = $this->authManager->getRole($name);
                 }
-                $this->authManager->addChild($this->authItem, $child);
+
+                if ($this->authManager->canAddChild($this->authItem, $child)) {
+                    $this->authManager->addChild($this->authItem, $child);
+                }
             }
         }
     }
