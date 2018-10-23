@@ -69,7 +69,7 @@ class RoleController extends Controller
     {
         $model = new Role();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
             Yii::$app->session->setFlash('success', Module::t('app', 'Role created successfully'));
             return $this->redirect(['index']);
         }
@@ -83,7 +83,7 @@ class RoleController extends Controller
     {
         $model = $this->findModel($name);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
             Yii::$app->session->setFlash('success', Module::t('app', 'Role update successfully'));
             return $this->redirect(['index']);
         }
