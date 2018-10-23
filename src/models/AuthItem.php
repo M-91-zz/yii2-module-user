@@ -111,6 +111,9 @@ class AuthItem extends \yii\base\Model
                         'name' => $this->name,
                     ]));
                 }
+            }, 
+            'when' => function($model) {
+                return $model->isNewRecord();
             }],
         ];
     }
