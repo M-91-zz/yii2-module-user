@@ -165,8 +165,9 @@ class AuthItem extends \yii\base\Model
 
         if ($this->isNewRecord()) {
             $return = $this->authManager->add($authItem);
+        } else {
+            $return = $this->authManager->update($this->authItem->name, $authItem);
         }
-        $return = $this->authManager->update($this->authItem->name, $authItem);
 
         if ($return) {
             $this->addChild();
