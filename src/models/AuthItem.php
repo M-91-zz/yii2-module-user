@@ -72,7 +72,8 @@ class AuthItem extends \yii\base\Model
 
     public const EVENT_SAVE = 'event-save';
 
-    public function init(){
+    public function init()
+    {
         parent::init();
         $this->on(self::EVENT_SAVE, [$this, 'addChild']);
     }
@@ -104,15 +105,15 @@ class AuthItem extends \yii\base\Model
             [['items'], 'safe'],
             ['name', function ($attribute, $params, $validator) {
                 if (
-                    $this->authManager->getRole($this->name) !== null 
+                    $this->authManager->getRole($this->name) !== null
                     || $this->authManager->getPermission($this->name) !== null
                 ) {
                     $this->addError($attribute, Module::t('app', 'Item name must be unique. [{name}] already exists.', [
                         'name' => $this->name,
                     ]));
                 }
-            }, 
-            'when' => function($model) {
+            },
+            'when' => function ($model) {
                 return $model->isNewRecord();
             }],
         ];
@@ -163,7 +164,7 @@ class AuthItem extends \yii\base\Model
      */
     public function save(): bool
     {
-        $authItem = ($this->type === Item::TYPE_ROLE) 
+        $authItem = ($this->type === Item::TYPE_ROLE)
             ? $this->authManager->createRole($this->name)
             : $this->authManager->createPermission($this->name);
 
@@ -188,11 +189,15 @@ class AuthItem extends \yii\base\Model
     public function getItems(): array
     {
         $items[Module::t('app', 'Roles')] = ArrayHelper::map(
-            $this->authManager->getRoles(), 'name', 'name'
+            $this->authManager->getRoles(),
+            'name',
+            'name'
         );
 
         $items[Module::t('app', 'Permissions')] = ArrayHelper::map(
-            $this->authManager->getPermissions(), 'name', 'name'
+            $this->authManager->getPermissions(),
+            'name',
+            'name'
         );
         
         $items = array_map(function ($item) {
@@ -209,7 +214,9 @@ class AuthItem extends \yii\base\Model
     public function getChildren(): array
     {
         return ArrayHelper::map(
-            $this->authManager->getChildren($this->authItem->name), 'name', 'name'
+            $this->authManager->getChildren($this->authItem->name),
+            'name',
+            'name'
         );
     }
 
@@ -242,5 +249,4 @@ class AuthItem extends \yii\base\Model
             }
         }
     }
-    
 }

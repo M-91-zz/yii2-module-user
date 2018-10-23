@@ -1,6 +1,7 @@
 <?php
 
 use yii\db\Migration;
+
 // https://github.com/yiisoft/yii2-app-advanced/blob/master/console/migrations/m130524_201442_init.php
 class m180912_193723_create_user_table extends Migration
 {
@@ -27,7 +28,6 @@ class m180912_193723_create_user_table extends Migration
                 'updated_at' => $this->integer()->notNull(),
             ], $tableOptions);
         }
-
     }
     public function down()
     {

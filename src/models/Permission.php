@@ -74,7 +74,5 @@ class Permission extends Model
 
     public function permissionList()
     {
-
     }
-
 }

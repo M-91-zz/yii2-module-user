@@ -28,15 +28,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'auth_key') ?>
 
-    <?php // echo $form->field($model, 'password_reset_token') ?>
+    <?php // echo $form->field($model, 'password_reset_token')?>
 
-    <?php // echo $form->field($model, 'status') ?>
+    <?php // echo $form->field($model, 'status')?>
 
-    <?php // echo $form->field($model, 'superadmin') ?>
+    <?php // echo $form->field($model, 'superadmin')?>
 
-    <?php // echo $form->field($model, 'created_at') ?>
+    <?php // echo $form->field($model, 'created_at')?>
 
-    <?php // echo $form->field($model, 'updated_at') ?>
+    <?php // echo $form->field($model, 'updated_at')?>
 
     <div class="form-group">
         <?= Html::submitButton(Module::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>

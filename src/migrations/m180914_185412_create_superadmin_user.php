@@ -29,8 +29,9 @@ class m180914_185412_create_superadmin_user extends Migration
     public function safeDown()
     {
         $user = User::findByUsername('superadmin');
-        if ($user)
+        if ($user) {
             $user->delete();
+        }
     }
 
     /*

@@ -12,7 +12,6 @@ use M91\UserModule\models\Role as RoleBase;
 
 class Role extends RoleBase
 {
-
     public $authManager;
 
     public function __construct()
@@ -47,5 +46,4 @@ class Role extends RoleBase
 
         return $dataProvider;
     }
-
 }

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace M91\UserModule\components;
 

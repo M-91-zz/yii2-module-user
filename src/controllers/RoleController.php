@@ -16,7 +16,6 @@ use M91\UserModule\filters\AccessRule;
 
 class RoleController extends Controller
 {
-
     private $authManager;
 
     /**
@@ -111,5 +110,4 @@ class RoleController extends Controller
 
         return new AuthItem($role);
     }
-
 }

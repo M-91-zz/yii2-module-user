@@ -22,7 +22,6 @@ use M91\UserModule\Module;
  */
 class User extends UserIdentity
 {
-    
     const STATUS_UNCONFIRMED = 0;
     const STATUS_ACTIVE = 1;
     const STATUS_DELETED = 99;

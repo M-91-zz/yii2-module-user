@@ -11,23 +11,18 @@ class AccessRule extends \yii\filters\AccessRule
      */
     protected function matchRole($user)
     {
-        if (!$this->roles)
+        if (!$this->roles) {
             return true;
+        }
         
         foreach ($this->roles as $role) {
             if ($role === 'admin' && (!$user->isGuest && $user->identity->isSuperadmin())) {
                 return true;
-            }
-            
-            elseif ($role === '?' && $user->isGuest) {
+            } elseif ($role === '?' && $user->isGuest) {
                 return true;
-            }
-            
-            elseif ($role === '@' && !$user->isGuest) {
+            } elseif ($role === '@' && !$user->isGuest) {
                 return true;
-            }
-
-            elseif ($user->can($role)) {
+            } elseif ($user->can($role)) {
                 return true;
             }
         }

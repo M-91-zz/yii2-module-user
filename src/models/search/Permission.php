@@ -12,7 +12,6 @@ use M91\UserModule\models\Permission as PermissionBase;
 
 class Permission extends PermissionBase
 {
-
     public $authManager;
 
     public function __construct()
@@ -48,5 +47,4 @@ class Permission extends PermissionBase
 
         return $dataProvider;
     }
-
 }

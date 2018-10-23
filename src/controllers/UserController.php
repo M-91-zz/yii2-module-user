@@ -10,6 +10,7 @@ use yii\filters\AccessControl;
 use M91\UserModule\models\User;
 use M91\UserModule\models\search\User as UserSearch;
 use M91\UserModule\filters\AccessRule;
+
 /**
  * UserController implements the CRUD actions for User model.
  */
