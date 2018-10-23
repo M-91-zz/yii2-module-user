@@ -48,11 +48,7 @@ return [
     'Permission' => 'Permissão',
     'Permissions' => 'Permissões',
     'Create Role' => 'Criar Função',
-<<<<<<< HEAD
     'Item name must be unique. [{name}] already exists.' => 'Nome do item deve ser único. [{name}] já existe.',
-=======
-    'Item name must be unique. [{name}] already exists' => 'Nome do item deve ser único. [{name}] já existe.',
->>>>>>> 44fed10ca63ee38c46787a048a4bb0272c314e8e
     'Name' => 'Nome',
     'Description' => 'Descrição',
     'Rule' => 'Regra',
