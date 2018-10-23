@@ -70,14 +70,6 @@ class AuthItem extends \yii\base\Model
      */
     public $items;
 
-    public const EVENT_SAVE = 'event-save';
-
-    public function init()
-    {
-        parent::init();
-        $this->on(self::EVENT_SAVE, [$this, 'addChild']);
-    }
-    
     public function __construct($authItem = null)
     {
         $this->authManager = Yii::$app->authManager;
