@@ -52,4 +52,6 @@ return [
     'Name' => 'Nome',
     'Description' => 'Descrição',
     'Rule' => 'Regra',
+    'Select' => 'Selecione',
+    'Items' => 'Itens',
 ];
