@@ -221,6 +221,9 @@ class AuthItem extends \yii\base\Model
         );
     }
 
+    /**
+     * @return void
+     */
     public function saveChildren()
     {
         if (!is_null($this->authItem)) {
