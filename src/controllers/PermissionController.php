@@ -90,9 +90,9 @@ class PermissionController extends Controller
 
     public function actionDelete(string $name)
     {
-        $role = $this->authManager->getPermission($name);
+        $permission = $this->authManager->getPermission($name);
 
-        if ($role !== null && $this->authManager->remove($role)) {
+        if ($permission !== null && $this->authManager->remove($permission)) {
             Yii::$app->session->setFlash('success', Module::t('app', 'Permission deleted successfully'));
         }
 
@@ -101,12 +101,12 @@ class PermissionController extends Controller
 
     protected function findModel(string $name)
     {
-        $role = $this->authManager->getPermission($name);
+        $permission = $this->authManager->getPermission($name);
 
-        if (empty($role)) {
+        if (empty($permission)) {
             throw new \yii\web\NotFoundHttpException();
         }
 
-        return new Permission($role);
+        return new Permission($permission);
     }
 }
