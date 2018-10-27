@@ -39,9 +39,8 @@ class Permission extends PermissionBase
 
         $query = (new Query)
             ->select('*')
-            ->from($this->authManager->itemTable)
             ->andWhere(['type' => $this->type])
-            ->andWhere(['name' => $this->name]);
+            ->from($this->authManager->itemTable);
 
         $dataProvider->allModels = $query->all();
 
