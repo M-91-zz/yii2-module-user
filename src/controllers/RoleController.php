@@ -9,7 +9,6 @@ use yii\filters\AccessControl;
 use yii\data\ArrayDataProvider;
 use M91\UserModule\Module;
 use M91\UserModule\models\search\Role as RoleSearch;
-use M91\UserModule\models\search\Permission as PermissionSearch;
 use M91\UserModule\models\Role;
 use M91\UserModule\models\AuthItem;
 use M91\UserModule\filters\AccessRule;
