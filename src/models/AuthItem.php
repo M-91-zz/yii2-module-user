@@ -79,7 +79,6 @@ class AuthItem extends \yii\base\Model
         $this->authItem = $authItem;
         
         if (!is_null($authItem) && $properties = get_object_vars($authItem)) {
-            
             if ($this->type === Item::TYPE_ROLE) {
                 $this->subRoles = $this->getChildren(Item::TYPE_ROLE);
                 $this->permissions = $this->getChildren(Item::TYPE_PERMISSION);
@@ -199,7 +198,7 @@ class AuthItem extends \yii\base\Model
         );
         
         if (!is_null($this->authItem)) {
-            $roles = array_filter($roles, function($name) {
+            $roles = array_filter($roles, function ($name) {
                 return $name !== $this->authItem->name ? $name : false;
             });
         }
