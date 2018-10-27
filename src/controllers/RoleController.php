@@ -8,14 +8,23 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\data\ArrayDataProvider;
 use M91\UserModule\Module;
-use M91\UserModule\models\search\Role as RoleSearch;
-use M91\UserModule\models\Role;
+use M91\UserModule\models\search\AuthItem as AuthItemSearch;
 use M91\UserModule\models\AuthItem;
 use M91\UserModule\filters\AccessRule;
+use yii\rbac\Item;
 
 class RoleController extends Controller
 {
-    private $authManager;
+    /**
+     * @var \yii\rbac\ManagerInterface $authManager
+     */
+    protected $authManager;
+
+    /**
+     * @var int
+     */
+    protected $type = Item::TYPE_ROLE;
+
 
     /**
      * {@inheritdoc}
@@ -54,7 +63,8 @@ class RoleController extends Controller
 
     public function actionIndex()
     {
-        $searchModel = new RoleSearch();
+        $searchModel = new AuthItemSearch();
+        $searchModel->type = $this->type;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -66,6 +76,7 @@ class RoleController extends Controller
     public function actionCreate()
     {
         $model = new Role();
+        $model->type = $this->type;
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
             Yii::$app->session->setFlash('success', Module::t('app', 'Role created successfully'));
@@ -83,7 +94,7 @@ class RoleController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
             Yii::$app->session->setFlash('success', Module::t('app', 'Role update successfully'));
-            return $this->redirect(['index']);
+            // return $this->redirect(['index']);
         }
         return $this->render('update', ['model' => $model]);
     }
@@ -107,6 +118,6 @@ class RoleController extends Controller
             throw new \yii\web\NotFoundHttpException();
         }
 
-        return new Role($role);
+        return new AuthItem($role);
     }
 }
