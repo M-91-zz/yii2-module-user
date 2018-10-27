@@ -27,11 +27,19 @@ class Menu extends Nav
                 'url'   => ['/user-module/role/index'],
             ],
             [
+                'label' => Module::t('rbac', 'Permissions'),
+                'url'   => ['/user-module/permission/index'],
+            ],
+            [
                 'label' => Module::t('rbac', 'Create'),
                 'items' => [
                     [
                         'label' => Module::t('rbac', 'Create Role'),
                         'url'   => ['/user-module/role/create']
+                    ],
+                    [
+                        'label' => Module::t('rbac', 'Create Permission'),
+                        'url'   => ['/user-module/permission/create']
                     ],
                 ]
             ],
